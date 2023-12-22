@@ -1,0 +1,9 @@
+{
+    "checks": [
+      "functions",
+      "classes",
+      "methods",
+      "attributes"
+      
+    ]
+  }
