@@ -5,6 +5,7 @@ import json
 import os
 
 
+
 CHECKS = [
     'imports',
     'functions', 
@@ -21,14 +22,14 @@ class Reaper:
         self.source = source
         self.config = config
         self.tree = ast.parse(self.source)
-        self.filename = filename  # Store the filename
+        self.filename = filename
 
     def run(self):
         results = {}
         for check in self.config['checks']:
             if check in CHECKS:
                 results[check] = getattr(self, f'check_{check}')()
-        print(f"File: {self.filename}")  # Print the filename
+        print(f"File: {self.filename}")
         print(json.dumps(results, indent=2))
 
     def check_imports(self):
@@ -78,8 +79,6 @@ class Reaper:
                 return True
         return False
 
-
-import os
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
